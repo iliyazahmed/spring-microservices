@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ecomapi-apigateway
+  cloud:
+    gateway:
+      routes:
+        - id: ecomapi-customer-service
+          uri: lb://ECOMAPI-CUSTOMER-SERVICE
+          predicates:
+            - Path=/actuator/**
+        - id: ecomapi-products-service
+          uri: lb://ECOMAPI-PRODUCTS-SERVICE
+          predicates:
+            - Path=/actuator/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+  instance:
+    hostname: localhost
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
