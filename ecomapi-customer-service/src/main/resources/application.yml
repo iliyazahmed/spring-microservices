@@ -1,0 +1,21 @@
+server:
+  port : 9090
+
+spring:
+  application:
+    name: ecomapi-customer-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: tiger
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8760/eureka/
+  instance:
+    hostname: localhost
